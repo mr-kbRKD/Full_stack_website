@@ -3,7 +3,7 @@
 
 ## Description
 
-This project is a clone of Zomato, a popular online food delivery and restaurant discovery platform. Zomato allows users to explore restaurants, read reviews, and order food online. The goal of this clone is to replicate some of the core features of Zomato, providing users with a similar experience.
+This project Zomato restaurent app, a popular online food delivery and restaurant discovery platform. Zomato allows users to explore restaurants, read reviews, and order food online. The goal of this project is to replicate some of the core features of Zomato,signup and signin etc.
 
 ## Features
 
@@ -49,18 +49,23 @@ Copy code
 cd zomato-clone
 Install dependencies:
 
-Copy code
-npm install
-Set up environment variables:
+npm i 
+express
+mongoose
+nodemon
+etc.
+
 
 Create a .env file in the root directory and add the following:
 
 env
-Copy code
+make database connection : 
 MONGO_URL=your-mongodb-connection-string
 PORT=3000
 Run the application:
 
+node app.js
+nodemon app.js
 
 Copy code
 npm start

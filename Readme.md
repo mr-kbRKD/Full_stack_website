@@ -57,10 +57,8 @@ do npm install
 -body-parser
 -dotenv
 -path
+-nodemon
 
-Copy code
-npm install
-Set up environment variables:
 
 Create a .env file in the root directory and add the following:
 
@@ -73,6 +71,9 @@ Create account on mongoDB and create database and access your url provide it to 
 
 
 Run the application:
+
+using node app.js
+or nodemon app.js
 
 
 Copy code

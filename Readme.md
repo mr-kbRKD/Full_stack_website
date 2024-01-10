@@ -45,9 +45,18 @@ git clone https://github.com/mr-kbRKD/Web_APP.git
 Navigate to the project directory:
 
 
+
+
 Copy code
 cd zomato-clone
 Install dependencies:
+in app.js 
+do npm install
+-express
+-mongoose
+-body-parser
+-dotenv
+-path
 
 Copy code
 npm install
@@ -59,12 +68,18 @@ env
 Copy code
 MONGO_URL=your-mongodb-connection-string
 PORT=3000
+
+Create account on mongoDB and create database and access your url provide it to the server through env to keep it safe.
+
+
 Run the application:
 
 
 Copy code
 npm start
 Open your browser and go to http://localhost:3000 to access the application.
+
+
 
 Usage
 Sign Up:

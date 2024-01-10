@@ -31,3 +31,87 @@ body {
     background-color: #45a049;
   }
   
+*{
+margin:0;
+padding:0%;
+box-sizing : "border-box";
+font-family:"Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.hero-section{
+background: url(images/heroSectionBackground.png);
+background-size: cover;
+background-position: center;
+color: white;
+min-height: 60vh;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  /* padding: (top and bottom) (left and right); */
+  padding: 16px 48px;
+
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-menu-container{
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu-container .user-icon{
+  height: 30px;
+  width: 30px;
+  color: white;
+border: solid 1px white;
+border-radius: 100%;
+/* used for vertical alignment */
+align-items: center;  
+/* used for horizontal alignment */
+justify-content: center;
+display: none;
+}
+
+
+@media only screen and (max-width:600px) {
+  .navbar-menu-container .user-icon{
+    display: flex;
+  }
+  .link{
+    display:none;
+  }
+  .navbar{
+    padding: 16px;
+  }
+
+  .hero-section{
+    min-height: 80vh;
+  }
+  
+}
+
+
+.hero-section-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  height: calc(60vh - 60px);
+}
+
+.hero-section-logo{
+  /* whenever there is img to set don't set height only width will help */
+  width: 200px;
+}

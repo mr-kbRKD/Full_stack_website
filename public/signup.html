@@ -1,0 +1,100 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <title>Signup</title>
+</head>
+<body>
+  <h1>Signup Page</h1>
+  <form id="signupForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="button" onclick="signup()">Signup</button>
+  </form>
+  <p>Already have an account? <a href="./signin.html">Login</a></p>
+  <p>Click me to go on <a href="./homepage.html">Homepage.</a></p>
+
+  <!-- Include SweetAlert script -->
+  <!-- signup.html -->
+
+<script>
+  async function signup() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const checkUserResponse = await fetch('/auth/checkUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+      });
+
+      const checkUserData = await checkUserResponse.json();
+
+      if (checkUserData.exists) {
+        // User already exists, show a SweetAlert warning notification
+        Swal.fire({
+          icon: 'warning',
+          title: 'User Already Exists',
+          text: 'The username is already registered. Please log in.',
+          timer: 1000,
+          showConfirmButton: false,
+        });
+
+        // Redirect to the signin page on success
+        setTimeout(() => {
+          window.location.href = '/signin';
+        }, 1000);
+      } else {
+        // User doesn't exist, proceed with signup logic
+        const signupResponse = await fetch('/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const signupData = await signupResponse.json();
+
+        if (signupData.success) {
+          // Show SweetAlert success notification with a timer
+          Swal.fire({
+            icon: 'success',
+            title: 'Signup Successful',
+            text: 'You have successfully signed up!',
+            timer: 1000,
+            showConfirmButton: false,
+          });
+
+          // Redirect to the signin page on success
+          setTimeout(() => {
+            window.location.href = '/signin';
+          }, 1000);
+        } else {
+          // Show SweetAlert error notification for other failures
+          Swal.fire({
+            icon: 'error',
+            title: 'Signup Failed',
+            text: signupData.message,
+            timer: 1000,
+            showConfirmButton: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+</script>
+
+</body>
+</html>
